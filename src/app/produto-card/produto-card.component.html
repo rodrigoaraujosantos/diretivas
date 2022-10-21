@@ -1,16 +1,45 @@
-<div class="card">
+
+
+
+<div class="card" *ngIf="mostrarProduto == true">
   <img [src]="prod.imagem" alt="" class="card-image-top">
   <div class="card-body">
     <h5 class="card-title">{{prod.nome}}</h5>
-    <h6 class="car-subtitle text-muted">{{prod.preco}}</h6>
-    <span class="badge mb-1 bg-danger">
+    <h6 class="car-subtitle text-muted">R$ {{prod.preco}}</h6>
+
+    <!--
+      menor ou igual a 10 -> vermelho
+      maior que 10 e  menor ou igual a 30 -> amarelo
+      maior que 30 e menor que 100 -> azul
+      maior que 100 -> verde
+
+      azul -> bg-primary
+      amarelo -> bg-warning
+      vermelho -> bg-danger
+      verde -> bg-success
+    -->
+    
+    
+    
+    <span 
+      class="badge mb-1"
+      [ngClass]="{
+        'bg-danger': prod.estoque <= 10,
+        'bg-warning': prod.estoque > 10 && prod.estoque <= 30,
+        'bg-primary': prod.estoque > 30 && prod.estoque < 100,
+        'bg-success': prod.estoque > 100
+      }"
+      >
       {{prod.estoque}} unidades restantes
     </span>
+    
     <p class="card-text text-truncate">
       {{prod.descricao}}
     </p>
-    <button class="btn btn-sm btn-danger">
+    <button class="btn btn-sm btn-danger" (click)="esconderProduto()">
       Esconder Produto
     </button>
+
+    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" ></button>
   </div>
 </div>

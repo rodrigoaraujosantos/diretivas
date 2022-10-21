@@ -14,6 +14,8 @@ export class AppComponent {
   estoque: number = 0
   descricao: string = ''
 
+
+  
   produtos: Produto[] = []
 
   adicionarProduto(evento: any): void {
@@ -30,6 +32,8 @@ export class AppComponent {
       preco: this.preco
     })
   }
+
+  
 }
 
 

@@ -17,9 +17,15 @@ export class ProdutoCardComponent implements OnInit {
     preco: 0
   }
 
+  mostrarProduto: boolean = true
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  esconderProduto() {
+    this.mostrarProduto = false
   }
 
 }
