@@ -34,6 +34,6 @@
   </div>
   <section class="produtos">
     <!-- <produto-card [prod]="p"></produto-card> -->
-    <produto-card *ngFor="let item of produtos" [prod]="item"></produto-card>
+    <produto-card *ngFor="let item of produtos" [prod]="item" (deletar)="deletarProduto($event)"></produto-card>
   </section>
 </main>

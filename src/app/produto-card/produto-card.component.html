@@ -1,7 +1,7 @@
 
 
 
-<div class="card" *ngIf="mostrarProduto == true">
+<div class="card" *ngIf="mostrarProduto == true; else conteudoAlternativo">
   <img [src]="prod.imagem" alt="" class="card-image-top">
   <div class="card-body">
     <h5 class="card-title">{{prod.nome}}</h5>
@@ -40,6 +40,20 @@
       Esconder Produto
     </button>
 
-    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" ></button>
+    <button class="btn btn-sm" (click)="emitirEventoDeletar()">
+      &times;
+    </button>
   </div>
 </div>
+
+<!--
+  templete serve para usar o ELSE no ngIf
+-->
+<ng-template #conteudoAlternativo>
+  <div class="card">
+    <div class="card-body">
+      <p class="card-text">O produto {{prod.nome}} não aparecerá para os usuários deste site</p>
+      <button class="btn btn-danger" (click)="aparecerProduto()">Mostrar Novamente</button>
+    </div>
+  </div>
+</ng-template>

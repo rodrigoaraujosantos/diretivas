@@ -33,6 +33,12 @@ export class AppComponent {
     })
   }
 
+  deletarProduto(p: Produto): void {
+    // this.produtos.splice(0)
+    const index = this.produtos.indexOf(p)
+    this.produtos.splice(index, 1)
+  }
+
   
 }
 
